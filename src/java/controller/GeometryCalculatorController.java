@@ -45,7 +45,7 @@ public class GeometryCalculatorController extends HttpServlet {
         request.setAttribute("area", String.valueOf(result));
         
         RequestDispatcher view =
-                request.getRequestDispatcher("/results.jsp");
+                request.getRequestDispatcher("/index.jsp");
         view.forward(request, response);
 
 

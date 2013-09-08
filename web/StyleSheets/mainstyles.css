@@ -1,0 +1,15 @@
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	margin: 10px;
+}
+label {
+    display: block;
+}
+label.error {
+	color: red;
+	padding-left: 5px;
+	font-size: smaller;
+        display: inline;
+}
+
+
