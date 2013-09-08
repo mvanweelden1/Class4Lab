@@ -33,7 +33,8 @@ public class GeometryCalculatorController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        try {
+            response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
         String length = request.getParameter("length");
@@ -47,6 +48,9 @@ public class GeometryCalculatorController extends HttpServlet {
         RequestDispatcher view =
                 request.getRequestDispatcher("/index.jsp");
         view.forward(request, response);
+        } catch (IOException | ServletException e) {
+            //do something
+        }
 
 
     }
