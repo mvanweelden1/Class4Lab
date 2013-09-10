@@ -1,5 +1,5 @@
 <%-- 
-    Document   : index
+    Document   : challenge 2
     Created on : Sep 6, 2013, 7:13:46 PM
     Author     : Mark Van Weelden
 --%>
