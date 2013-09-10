@@ -12,11 +12,19 @@
         <title>Result Page</title>
     </head>
     <body>
-        <%
-            String result = (String)request.getAttribute("area");
+      <%
+                String result = "";
+                String prefix = "The area is: ";
+                Object area = request.getAttribute("area");
+                
+                if(area != null){
+                    result = area.toString();
+                }
 
-            out.print("The area is: " + result);
 
-        %>
+
+            %>
+
+            <p><%= prefix + result%></p>
     </body>
 </html>

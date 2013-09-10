@@ -5,21 +5,18 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.RectangleCalculator;
 
 /**
  *
- * @author Owner
+ * @author mvanweelden1
  */
-@WebServlet(name = "GeometryCalculatorController", urlPatterns = {"/GeometryCalculatorController"})
-public class GeometryCalculatorController extends HttpServlet {
+@WebServlet(name = "GeometryCalculatorController1", urlPatterns = {"/GeometryCalculatorController1"})
+public class GeometryCalculatorController1 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -33,25 +30,16 @@ public class GeometryCalculatorController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+
         try {
-            response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-
-        String length = request.getParameter("length");
-        String width = request.getParameter("width");
-        
-        RectangleCalculator rc = new RectangleCalculator();
-        double result = rc.getArea(length, width);
-       
-        request.setAttribute("area", String.valueOf(result));
-        
-        RequestDispatcher view =
-                request.getRequestDispatcher("/index.jsp");
-        view.forward(request, response);
-        } catch (IOException | ServletException e) {
-            //do something
+            String length = request.getParameter("length");
+            String width = request.getParameter("width");
+            
+            
+            
+        } catch (Exception e) {
         }
-
 
     }
 
