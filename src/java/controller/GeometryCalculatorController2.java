@@ -7,13 +7,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.CircleCalculator;
 import model.RectangleCalculator;
+import model.TriangleCalculator;
 
 /**
  *
  * @author Owner
  */
-@WebServlet(name = "GeometryCalculatorController2", urlPatterns = {"/GeometryCalculatorController2"})
+@WebServlet(name = "GeometryCalculatorController2", urlPatterns = {"/Controller2"})
 public class GeometryCalculatorController2 extends HttpServlet {
 
     /**
@@ -28,22 +30,54 @@ public class GeometryCalculatorController2 extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            response.setContentType("text/html;charset=UTF-8");
+        
+        String calcType = request.getParameter("CalcType");
+        
+        if (calcType.equals("rectangle")) {
 
             String length = request.getParameter("length");
             String width = request.getParameter("width");
 
             RectangleCalculator rc = new RectangleCalculator();
-            double result = rc.getArea(length, width);
-
-            request.setAttribute("area", String.valueOf(result));
+            double answer = rc.getArea(length, width);
+            
+            request.setAttribute("answer", String.valueOf(answer));
 
             RequestDispatcher view =
                     request.getRequestDispatcher("/challenge2.jsp");
             view.forward(request, response);
-        } catch (IOException | ServletException e) {
-            //do something
+
+        } else if (calcType.equals("circle")) {
+
+            String radius = request.getParameter("radius");
+
+            CircleCalculator cc = new CircleCalculator();
+            
+            double answer = cc.getArea(Double.valueOf(radius));
+
+            request.setAttribute("cAnswer", String.valueOf(answer));
+
+            RequestDispatcher view =
+                    request.getRequestDispatcher("/challenge2.jsp");
+            view.forward(request, response);
+
+
+        } else {
+
+            String sideA = request.getParameter("sideA");
+            String sideB = request.getParameter("sideB");
+
+            TriangleCalculator tc = new TriangleCalculator();
+            
+            double sideC = tc.getHypotenuse(Double.parseDouble(sideA), Double.parseDouble(sideB));
+
+            request.setAttribute("tAnswer", String.valueOf(sideC));
+
+            RequestDispatcher view =
+                    request.getRequestDispatcher("/challenge2.jsp");
+            view.forward(request, response);
+
+
         }
 
 

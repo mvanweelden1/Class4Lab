@@ -5,6 +5,7 @@
 package controller;
 
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mvanweelden1
  */
-@WebServlet(name = "GeometryCalculatorController1", urlPatterns = {"/GeometryCalculatorController1"})
+@WebServlet(name = "GeometryCalculatorController1", urlPatterns = {"/Controller1"})
 public class GeometryCalculatorController1 extends HttpServlet {
 
     /**
@@ -32,14 +33,54 @@ public class GeometryCalculatorController1 extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        try {
+        String calcType = request.getParameter("CalcType");
+
+        if (calcType.equals("rectangle")) {
+
             String length = request.getParameter("length");
             String width = request.getParameter("width");
-            
-            
-            
-        } catch (Exception e) {
+
+            double result = Double.parseDouble(length) * Double.parseDouble(width);
+
+            request.setAttribute("answer", String.valueOf(result));
+
+            RequestDispatcher view =
+                    request.getRequestDispatcher("/challenge1results.jsp");
+            view.forward(request, response);
+
+        } else if (calcType.equals("circle")) {
+
+            double pi = 3.14159265359;
+
+            String radius = request.getParameter("radius");
+
+            double area = pi * (Double.parseDouble(radius) * Double.parseDouble(radius));
+
+            request.setAttribute("answer", String.valueOf(area));
+
+            RequestDispatcher view =
+                    request.getRequestDispatcher("/challenge1results.jsp");
+            view.forward(request, response);
+
+
+        } else {
+
+            String sideA = request.getParameter("sideA");
+            String sideB = request.getParameter("sideB");
+
+            double sideC = Math.sqrt((Double.parseDouble(sideA) * Double.parseDouble(sideA))
+                    + ((Double.parseDouble(sideB) * Double.parseDouble(sideB))));
+
+            request.setAttribute("answer", String.valueOf(sideC));
+
+            RequestDispatcher view =
+                    request.getRequestDispatcher("/challenge1results.jsp");
+            view.forward(request, response);
+
+
         }
+
+
 
     }
 

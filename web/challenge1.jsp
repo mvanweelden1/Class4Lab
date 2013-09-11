@@ -9,24 +9,44 @@
     </head>
     <body>
         <h1>Geometry Calculator</h1>
+        <div>
+            <form id="rectangle" name="rectangle" method="POST" action="Controller1?CalcType=rectangle">
+                <h3>Calculate Area of a Rectangle</h3>
 
-        <form id="rectangle" name="rectangle" method="POST" action="GeometryCalculatorController">
-            <p>Calculate Area of a Rectangle</p>
+                <label for="length">Enter Length</label>
+                <input type="text" name="length" id="length">
 
-            <label for="length">Enter Length</label>
-            <input type="text" name="length" id="length">
+                <label for="width">Enter Width</label>
+                <input type="text" name="width" id="width">
 
-            <label for="width">Enter Width</label>
-            <input type="text" name="width" id="width">
+                <p><input type="submit" name="submit" id="submit" value="Submit"></p>
+            </form>
+        </div>
+        <div>
+            <form id="circle" name="circle" method="POST" action="Controller1?CalcType=circle">
+                <h3>Calculate Area of a Circle</h3>
 
-            <p><input type="submit" name="submit" id="submit" value="Submit"></p>
+                <label for="length">Enter Radius</label>
+                <input type="text" name="radius" id="radius">
 
-          
+                <p><input type="submit" name="submit" id="submit" value="Submit"></p>
 
+            </form>
+        </div>
+        <div>
+            <form id="triangle" name="triangle" method="POST" action="Controller1?CalcType=triangle">
+                <h3>Calculate Hypotenuse of Right Triangle</h3>
 
+                <label for="sideA">Enter Side A</label>
+                <input type="text" name="sideA" id="sideA">
 
+                <label for="sideB">Enter Side B</label>
+                <input type="text" name="sideB" id="sideB">
 
-        </form>
+                <p><input type="submit" name="submit" id="submit" value="Submit"></p>
+
+            </form>
+        </div>
     </body>
 </html>
 

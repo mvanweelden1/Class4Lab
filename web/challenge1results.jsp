@@ -14,11 +14,11 @@
     <body>
       <%
                 String result = "";
-                String prefix = "The area is: ";
-                Object area = request.getAttribute("area");
+                String prefix = "The answer is: ";
+                Object answer = request.getAttribute("answer");
                 
-                if(area != null){
-                    result = area.toString();
+                if(answer != null){
+                    result = answer.toString();
                 }
 
 
